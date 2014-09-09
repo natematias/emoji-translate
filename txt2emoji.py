@@ -22,14 +22,14 @@ for line in codecs.open(sys.argv[1]):
     k = emojihash.keys()
     random.shuffle(k)
     for emo in k:
-      if emo.lower().find(stem)>=0:
-        try:
+      try:
+        if emo.lower().find(stem)>=0:
           sys.stdout.write(unichr(int(emojihash[emo][u'unified'], 16)).encode('utf-8') + " ")
           #print " " + stem + " : "  + emo.lower()
           emojicount += 1
           break
-        except:
-          continue
+      except:
+        continue
   if(emojicount>0):
     sys.stdout.write("\n")
   #print line
